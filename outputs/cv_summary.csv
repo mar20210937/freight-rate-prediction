@@ -1,0 +1,5 @@
+model,MAE,RMSE,MAPE,MedAPE,MAE_clean,MAPE_clean
+Baseline: median $/mile by distance band x equipment,158.5,644.79,6.89,4.2,105.28,4.61
+Final model (ridge + GBM corrector),122.91,634.37,5.15,2.61,69.24,2.84
+Final + market_index,118.08,633.22,5.02,2.39,64.36,2.7
+Final + date trend,132.11,631.26,5.65,2.95,78.69,3.24

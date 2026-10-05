@@ -1,4 +1,4 @@
-"""Train on data/train_test.csv, write validation_predictions.csv and the December chart inputs."""
+﻿"""Train on data/train_test.csv, write validation_predictions.csv and the December chart inputs."""
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
@@ -25,6 +25,7 @@ assert out.predicted_rate.notna().all() and (out.predicted_rate > 0).all()
 out.to_csv("validation_predictions.csv", index=False)
 
 # December chart: fixed lane; only the date varies. No quote_signal is supplied -> neutral value is used.
+dec = dec.iloc[:, :6].copy()
 dec["predicted_rate"] = np.round(model.predict(clean_frame(dec, coords)), 2)
 dec.to_csv("december_chart_predictions.csv", index=False)
 print(dec[["date", "predicted_rate"]].to_string(index=False))
